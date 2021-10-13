@@ -17,15 +17,26 @@ class CervezaRepository
   /* repositorio de cervezas */
   public function get_ListaCervezas()
   {
+    $result = [];
+
     $dbh = $this->db->conn;
-    /* $dbh = $this->connect_db(); */
 
     try {
       /* Prepara la petición y la ejecuta */
       $query = $dbh->prepare("SELECT * FROM t_cerveza");
       $query->execute();
 
-      $rows = $query->fetchAll(PDO::FETCH_ASSOC);
+
+      while ($row = $query->fetch(PDO::FETCH_OBJ)) {
+        array_push($result, new CervezaModel(
+          $row->cer_marca,
+          $row->cer_graduacion,
+          $row->cer_color,
+          $row->cer_composicion,
+          $row->cer_ano_lanza,
+          $row->cer_pais_orig
+        ));
+      }
     } catch (PDOException $e) {
       echo "Error: $e->getMessage()";
       die("error: Problemas petición get_ListaCervezas.");
@@ -34,7 +45,7 @@ class CervezaRepository
     /* cierra la instancia a la base de datos */
     $dbh = null;
 
-    return $rows;
+    return $result;
   }
 
   /* detalle cerveza */
@@ -59,8 +70,6 @@ class CervezaRepository
         $row->cer_ano_lanza,
         $row->cer_pais_orig
       );
-
-      /* $row = $query->fetch(PDO::FETCH_ASSOC); */
     } catch (PDOException $e) {
       echo "Error: $e->getMessage()";
       die("error: Problemas petición get_Cerveza.");
