@@ -1,34 +1,20 @@
 <?php
-include_once("model/cerveza.php");
+include_once("Database.php");
 
 class CervezaRepository
 {
-  private function connect_db()
+  public $db;
+
+  public function __construct()
   {
-    /* Datos conexión base de datos; */
-    $host = "localhost";
-    $user = "root";
-    $pass = "toor";
-    $db   = "cerveceria";
-    $dsn  = "mysql:dbname=$db;host=$host";
-
-    try {
-      /* Crea conexión con base de datos */
-      $dbh = new PDO($dsn, $user, $pass);
-      $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    } catch (PDOException $e) {
-      /* Manejo de errores */
-      echo "Error: $e->getMessage()";
-      die("error: Problemas con la conexión.");
-    }
-
-    return $dbh;
-  } // connect_db()
+    $this->db = new Database();
+  }
 
   /* repositorio de cervezas */
   public function get_ListaCervezas()
   {
-    $dbh = $this->connect_db();
+    $dbh = $this->db->conn;
+    /* $dbh = $this->connect_db(); */
 
     try {
       /* Prepara la petición y la ejecuta */
@@ -50,7 +36,8 @@ class CervezaRepository
   /* detalle cerveza */
   public function get_Cerveza($marca)
   {
-    $dbh = $this->connect_db();
+    /* $dbh = $this->connect_db(); */
+    $dbh = $this->db->conn;
 
     try {
       /* Prepara la petición y la ejecuta */
