@@ -11,7 +11,7 @@
 
   <a style="font-size: 3rem;" href="index.php">Back</a>
 
-  <h1>Detalles de la cerveza <?= $cerveza["marca"] ?></h1>
+  <h1>Detalles de la cerveza <?= $cerveza->marca ?></h1>
   <table border="true">
     <thead>
       <tr>
@@ -27,6 +27,7 @@
     <tbody>
       <tr>
         <?php
+
         foreach ($cerveza as $key => $value) {
           /* esto será assoc */
           echo "<td>" . $value . "</td>";
