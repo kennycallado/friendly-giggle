@@ -1,7 +1,11 @@
-DROP DATABASE IF EXISTS cerveceria;
-CREATE DATABASE IF NOT EXISTS cerveceria;
+-- DROP DATABASE IF EXISTS cerveceria;
+-- CREATE DATABASE IF NOT EXISTS cerveceria;
 
-USE cerveceria;
+-- USE cerveceria;
+
+--
+-- DEBE EXISTIR LA BASE DE DATOS cerveceria
+--
 
 CREATE TABLE t_cerveza (
   cer_marca varchar(20) PRIMARY KEY,
