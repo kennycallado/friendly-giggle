@@ -1,3 +1,4 @@
+
 Tienes que pensar que cada acceso a la web es una petición del tipo http, esto no es relevante pero yo uso mucho el término peticiones para referirme a que un usuario accede.
 
 Empieza por el index.php, donde llegan todas las peticiones http y dependiendo del url la aplicación guiará la petición hacia el lugar correcto (esto se llama enrutar). Esto se hace desde el index que lo primero que hace es cargar el controlador, o sea _include_ del fichero del controlador y crea una instancia. Justo debajo yo tengo la variable _$marca_, Javi en el ejercicio no lo hizo así pero es más fácil manejar la petición comprobar si desde _GET llega algo en _GET[marca], si contiene algo carga el método detalle de controlador, sino contiene nada _GET[marca] muestra la lista completa
