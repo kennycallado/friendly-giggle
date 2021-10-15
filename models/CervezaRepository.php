@@ -7,14 +7,16 @@ class CervezaRepository
 
   public function __construct()
   {
+    /* Crea instancia de Database */
+    /* esto crea la conexión */
     $this->db = new Database();
   }
 
   /* repositorio de cervezas */
   public function get_ListaCervezas()
   {
+    /* Copia conexión de base de datos */
     $dbh = $this->db->conn;
-    /* $dbh = $this->connect_db(); */
 
     try {
       /* Prepara la petición y la ejecuta */
@@ -36,7 +38,7 @@ class CervezaRepository
   /* detalle cerveza */
   public function get_Cerveza($marca)
   {
-    /* $dbh = $this->connect_db(); */
+    /* Copia conexión de base de datos */
     $dbh = $this->db->conn;
 
     try {
