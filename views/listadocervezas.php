@@ -23,7 +23,7 @@
       foreach ($cervezas as $key => $value) {
         echo "<tr>";
 
-        echo "<td><a href='index.php?marca=" . $value["cer_marca"] . "'>$value[cer_marca]</a></td>";
+        echo "<td><a href='index.php?marca=$value->marca'>$value->marca</a></td>";
 
         echo "</tr>";
       }
